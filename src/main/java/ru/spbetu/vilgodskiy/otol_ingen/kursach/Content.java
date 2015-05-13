@@ -1,9 +1,11 @@
 package ru.spbetu.vilgodskiy.otol_ingen.kursach;
 
+import com.hp.hpl.jena.query.QueryException;
 import edu.stanford.smi.protege.exception.OntologyLoadException;
 import edu.stanford.smi.protegex.owl.ProtegeOWL;
 import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
 import edu.stanford.smi.protegex.owl.model.*;
+import edu.stanford.smi.protegex.owl.model.query.QueryResults;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.BSP.BSP;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.GUILib.GUILib;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.Instrument;
@@ -16,6 +18,7 @@ import ru.spbetu.vilgodskiy.otol_ingen.kursach.user_query.UserQuery;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Vred.L.Hom on 06.05.2015.
@@ -313,8 +316,37 @@ public class Content {
         }
     }
 
-    private void readeOntology(){
-        
+    private List<RDFObject> readOWLClassIndividuals(String className){
+        ArrayList<RDFObject> instrumentsOWL = new ArrayList<>();
+        String sparql_text = "PREFIX f: <http://www.owl-ontologies.com/JavaInstruments.owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> SELECT ?instrument WHERE { ?instrument rdf:type f:"+ className +". }";
+        try
+        {
+            QueryResults results = owlModel.executeSPARQLQuery(sparql_text);
+            if(results.hasNext())
+            {
+                while(results.hasNext())
+                {
+                    Map map = results.next();
+                    RDFObject value = (RDFObject) map.get("instrument");
+                    instrumentsOWL.add(value);
+                }
+            }
+        }
+        catch(QueryException e)
+        {
+            System.out.println("ERROR in parsing the query to the ontology!");
+        }
+        catch(Exception e)
+        {
+            System.out.println("ERROR in quering the ontology!");
+        }
+        return instrumentsOWL;
+    }
+
+    private void readIndividuals(List<RDFObject> bspOWLList, List<RDFObject> guiOWLList,List<RDFObject> LogLibOWLList,List<RDFObject> LogOWLList, List<RDFObject> msdbOWLList,List<RDFObject> vcsOWLList){
+
+        //BSP
+
     }
 
 }
