@@ -169,7 +169,7 @@ public class GUI {
      */
     private void toDesignQueryTab(){
         UserQuery query = new UserQuery(this.content);
-        content.setQuery(query);
+        content.setUserQuery(query);
         JPanel queryPanel = new JPanel(new BorderLayout());
         queryPanel.add(query.toDesignQueryPanal(), BorderLayout.NORTH);
         tabbedPane.add("Создание запроса", queryPanel);

@@ -18,7 +18,7 @@ public enum BSP_ADV {
         return this.title;
     }
 
-    public static BSP_ADV getBspAdv(String title){
+    public static BSP_ADV getInd(String title){
         BSP_ADV [] values = BSP_ADV.values();
         for(BSP_ADV bspAdv : values){
             if(bspAdv.toString().equals(title)){

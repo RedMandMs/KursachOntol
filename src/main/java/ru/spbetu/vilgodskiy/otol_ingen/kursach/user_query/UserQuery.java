@@ -13,9 +13,10 @@ import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.VCS.TEAM_SIZE;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.VCS.VCS;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
 
 /**
  * Created by Vred.L.Hom on 06.05.2015.
@@ -26,6 +27,20 @@ public class UserQuery {
 
     public UserQuery(Content content) {
         this.content = content;
+    }
+
+    public UserQuery(Content content, COMPLEXITY complexity, BOOLEAN_PARAM avalibDB, TEAM_SIZE teamSize,
+                     BSP_ADV bspAdv, GUI_ADV guiAdv, BOOLEAN_PARAM multyPlatform,
+                     BOOLEAN_PARAM avalibAndroid, BOOLEAN_PARAM needLogging) {
+        this.content = content;
+        this.complexity = complexity;
+        this.avalibDB = avalibDB;
+        this.teamSize = teamSize;
+        this.bspAdv = bspAdv;
+        this.guiAdv = guiAdv;
+        this.multyPlatform = multyPlatform;
+        this.avalibAndroid = avalibAndroid;
+        this.needLogging = needLogging;
     }
 
     private COMPLEXITY complexity;
@@ -48,11 +63,11 @@ public class UserQuery {
 
     private JPanel queryPanel;
 
-    private BSP suitableBSP;
-    private GUILib suitableGUILib;
-    private LogLib suitableLogLib;
-    private MSDB suitableMSDB;
-    private VCS suitableVCS;
+    public List<String> suitableBSP;
+    public List<String> suitableGUILib;
+    public List<String> suitableLogLib;
+    public List<String> suitableMSDB;
+    public List<String> suitableVCS;
 
     public static JButton suitableBtn = new JButton("Найти подходящие инструменты");
 
@@ -114,16 +129,37 @@ public class UserQuery {
 
 
     private void fillSuitableInstruments(UserQuery readyQuery) {
-        queryPanel.add(new JLabel("Подходящая система сборки проекта:"));
-        queryPanel.add(new JLabel(readyQuery.getSuitableBSP().toString()));
-        queryPanel.add(new JLabel("Подходящая библиотека грфического интерфейса:"));
-        queryPanel.add(new JLabel(readyQuery.getSuitableGUILib().toString()));
-        queryPanel.add(new JLabel("Подходящая библиотека логирования:"));
-        queryPanel.add(new JLabel(readyQuery.getSuitableLogLib().toString()));
-        queryPanel.add(new JLabel("Подходящая СУБД:"));
-        queryPanel.add(new JLabel(readyQuery.getSuitableMSDB().toString()));
-        queryPanel.add(new JLabel("Подходящая система контроля версий:"));
-        queryPanel.add(new JLabel(readyQuery.getSuitableVCS().toString()));
+
+        queryPanel.add(new JLabel("Подходящие системы сборки проектов:"));
+        String sutableBSP = "";
+        for(String bsp : suitableBSP){
+            sutableBSP = sutableBSP + ", " + bsp;
+        }
+        queryPanel.add(new JLabel(sutableBSP.substring(1)));
+        queryPanel.add(new JLabel("Подходящие библиотеки грфического интерфейса:"));
+        String sutableGUILib = "";
+        for(String guiLib : suitableGUILib){
+            sutableGUILib = sutableGUILib + ", " + guiLib;
+        }
+        queryPanel.add(new JLabel(sutableGUILib.substring(1)));
+        queryPanel.add(new JLabel("Подходящие библиотеки логирования:"));
+        String sutableLogLib = "";
+        for(String logLib : suitableLogLib){
+            sutableLogLib = sutableLogLib + ", " + logLib;
+        }
+        queryPanel.add(new JLabel(sutableLogLib.substring(1)));
+        queryPanel.add(new JLabel("Подходящие СУБД:"));
+        String sutableMSDB = "";
+        for(String msdb : suitableMSDB){
+            sutableMSDB = sutableMSDB + ", " + msdb;
+        }
+        queryPanel.add(new JLabel(sutableMSDB.substring(1)));
+        queryPanel.add(new JLabel("Подходящие система контроля версий:"));
+        String sutableVCS = "";
+        for(String vcs : suitableVCS){
+            sutableVCS = sutableVCS + ", " +vcs;
+        }
+        queryPanel.add(new JLabel(sutableVCS.substring(1)));
     }
 
 
@@ -134,53 +170,13 @@ public class UserQuery {
         public void actionPerformed(ActionEvent e) {
             readAllRequeres();
             content.runSWRL();
-            UserQuery readyQuery = content.getQuery();
+            UserQuery readyQuery = content.getUserQuery();
             fillSuitableInstruments(readyQuery);
         }
     }
 
     public static String getClassName(){
         return "NeedUser";
-    }
-
-    public BSP getSuitableBSP() {
-        return suitableBSP;
-    }
-
-    public void setSuitableBSP(BSP suitableBSP) {
-        this.suitableBSP = suitableBSP;
-    }
-
-    public GUILib getSuitableGUILib() {
-        return suitableGUILib;
-    }
-
-    public void setSuitableGUILib(GUILib suitableGUILib) {
-        this.suitableGUILib = suitableGUILib;
-    }
-
-    public LogLib getSuitableLogLib() {
-        return suitableLogLib;
-    }
-
-    public void setSuitableLogLib(LogLib suitableLogLib) {
-        this.suitableLogLib = suitableLogLib;
-    }
-
-    public MSDB getSuitableMSDB() {
-        return suitableMSDB;
-    }
-
-    public void setSuitableMSDB(MSDB suitableMSDB) {
-        this.suitableMSDB = suitableMSDB;
-    }
-
-    public VCS getSuitableVCS() {
-        return suitableVCS;
-    }
-
-    public void setSuitableVCS(VCS suitableVCS) {
-        this.suitableVCS = suitableVCS;
     }
 
     public COMPLEXITY getComplexity() {
@@ -245,5 +241,12 @@ public class UserQuery {
 
     public void setNeedLogging(BOOLEAN_PARAM needLogging) {
         this.needLogging = needLogging;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "QueryUser";
     }
 }

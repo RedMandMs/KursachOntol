@@ -18,4 +18,14 @@ public enum COMPLEXITY {
     public String toString() {
         return this.title;
     }
+
+    public static COMPLEXITY getInd(String complex) {
+        COMPLEXITY[] values = COMPLEXITY.values();
+        for (COMPLEXITY complexit : values) {
+            if (complexit.toString().equals(complex)) {
+                return complexit;
+            }
+        }
+        return null;
+    }
 }

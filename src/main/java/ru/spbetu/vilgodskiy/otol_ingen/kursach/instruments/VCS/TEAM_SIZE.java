@@ -20,7 +20,7 @@ public enum TEAM_SIZE {
         return this.title;
     }
 
-    public static TEAM_SIZE getBspAdv(String title){
+    public static TEAM_SIZE getInd(String title){
         TEAM_SIZE [] values = TEAM_SIZE.values();
         for(TEAM_SIZE teamSize : values){
             if(teamSize.toString().equals(title)){
