@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e08f07eb-adec-400d-8a6c-de03127c7a58" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/GUI.java" afterPath="$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/GUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protege.properties" afterPath="$PROJECT_DIR$/protege.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/protege_0.log" afterPath="$PROJECT_DIR$/logs/protege_0.log" />
     </list>
     <ignored path="Otolog-Kursach.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/instruments/MSDB/MSDB.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+              <caret line="99" column="21" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -109,13 +111,13 @@
       <file leaf-file-name="GUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33082706">
-              <caret line="140" column="40" selection-start-line="140" selection-start-column="40" selection-end-line="140" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.7017544">
+              <caret line="478" column="44" selection-start-line="478" selection-start-column="44" selection-end-line="478" selection-end-column="44" />
               <folding>
-                <element signature="e#8721#8722#0" expanded="true" />
-                <element signature="e#8779#8780#0" expanded="true" />
-                <element signature="e#14737#14738#0" expanded="true" />
-                <element signature="e#14778#14779#0" expanded="true" />
+                <element signature="e#9050#9051#0" expanded="true" />
+                <element signature="e#9108#9109#0" expanded="true" />
+                <element signature="e#15066#15067#0" expanded="true" />
+                <element signature="e#15107#15108#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -836,12 +838,12 @@
       <workItem from="1431551248133" duration="4886000" />
       <workItem from="1431620482701" duration="1391000" />
       <workItem from="1431635975861" duration="2683000" />
-      <workItem from="1431638748015" duration="15040000" />
+      <workItem from="1431638748015" duration="16595000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45036000" />
+    <option name="totallyTimeSpent" value="46591000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1291,6 +1293,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/instruments/Instrument.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/instruments/MSDB/MSDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="99" column="21" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/user_query/UserQuery.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1319,14 +1337,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/instruments/MSDB/MSDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/Content.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1343,23 +1353,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/instruments/Instrument.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33082706">
-          <caret line="140" column="40" selection-start-line="140" selection-start-column="40" selection-end-line="140" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.7017544">
+          <caret line="478" column="44" selection-start-line="478" selection-start-column="44" selection-end-line="478" selection-end-column="44" />
           <folding>
-            <element signature="e#8721#8722#0" expanded="true" />
-            <element signature="e#8779#8780#0" expanded="true" />
-            <element signature="e#14737#14738#0" expanded="true" />
-            <element signature="e#14778#14779#0" expanded="true" />
+            <element signature="e#9050#9051#0" expanded="true" />
+            <element signature="e#9108#9109#0" expanded="true" />
+            <element signature="e#15066#15067#0" expanded="true" />
+            <element signature="e#15107#15108#0" expanded="true" />
           </folding>
         </state>
       </provider>

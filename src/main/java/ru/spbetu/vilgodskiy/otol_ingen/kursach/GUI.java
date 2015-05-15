@@ -2,9 +2,13 @@ package ru.spbetu.vilgodskiy.otol_ingen.kursach;
 
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.*;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.BSP.BSP;
+import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.BSP.BSP_ADV;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.GUILib.GUILib;
+import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.GUILib.GUI_ADV;
+import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.LogLib.COMPLEXITY;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.LogLib.LogLib;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.MSDB.MSDB;
+import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.VCS.TEAM_SIZE;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.VCS.VCS;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.user_query.UserQuery;
 
@@ -44,6 +48,8 @@ public class GUI {
     Content content = new Content();
 
     public void toDesign(){
+
+        createStandartSet();
 
         /** Главное окно */
         mainFrame = new JFrame("Подбор Java-инструментов");
@@ -424,7 +430,7 @@ public class GUI {
                     LogLib logLib = (LogLib) intrumentBoxReview.getSelectedItem();
                     for(LogLib guiLibIn : content.logLibList){
                         if(logLib == guiLibIn){
-                            content.guiLibList.remove(guiLibIn);
+                            content.logLibList.remove(guiLibIn);
                         }
                     }
                     break;
@@ -432,7 +438,7 @@ public class GUI {
                     MSDB msdb = (MSDB) intrumentBoxReview.getSelectedItem();
                     for(MSDB msdbIn : content.msdbList){
                         if(msdb == msdbIn){
-                            content.guiLibList.remove(msdbIn);
+                            content.msdbList.remove(msdbIn);
                         }
                     }
                     break;
@@ -440,12 +446,46 @@ public class GUI {
                     VCS vcs = (VCS) intrumentBoxReview.getSelectedItem();
                     for(VCS vcsIn : content.vcsList){
                         if(vcs == vcsIn){
-                            content.guiLibList.remove(vcsIn);
+                            content.vcsList.remove(vcsIn);
                         }
                     }
                     break;
             }
             createPanel.updateUI();
         }
+    }
+
+    private void createStandartSet(){
+        //BSP
+        content.bspList.add(new BSP("Ant", BSP_ADV.SPECFUNCTIONS, BOOLEAN_PARAM.FALSE, BOOLEAN_PARAM.FALSE));
+        content.bspList.add(new BSP("Gradle", BSP_ADV.ANDROID, BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.TRUE));
+        content.bspList.add(new BSP("Ivy", BSP_ADV.ANDROID, BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.FALSE));
+        content.bspList.add(new BSP("Maven", BSP_ADV.AVTOINCLUDE, BOOLEAN_PARAM.FALSE, BOOLEAN_PARAM.TRUE));
+        //GUI
+        content.guiLibList.add(new GUILib("AWT", GUI_ADV.DOCUMENTATION, BOOLEAN_PARAM.TRUE));
+        content.guiLibList.add(new GUILib("JFX", GUI_ADV.VERIETY_ELEMENTS, BOOLEAN_PARAM.TRUE));
+        content.guiLibList.add(new GUILib("SWT", GUI_ADV.DOCUMENTATION, BOOLEAN_PARAM.FALSE));
+        content.guiLibList.add(new GUILib("Swing", GUI_ADV.FORM_EDITOR, BOOLEAN_PARAM.TRUE));
+        //LogLib
+        content.logLibList.add(new LogLib("JUL", COMPLEXITY.NORMAL, BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.TRUE));
+        content.logLibList.add(new LogLib("LogBack", COMPLEXITY.ESYE, BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.FALSE));
+        content.logLibList.add(new LogLib("LogForJ", COMPLEXITY.DIFFICULT, BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.TRUE));
+        content.logLibList.add(new LogLib("NoneLog", COMPLEXITY.ESYE, BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.TRUE));
+        //MSDB
+        content.msdbList.add(new MSDB("MySQL", BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.FALSE, BOOLEAN_PARAM.TRUE));
+        content.msdbList.add(new MSDB("PostgreSQL", BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.FALSE, BOOLEAN_PARAM.FALSE));
+        content.msdbList.add(new MSDB("SQLite", BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.FALSE));
+        content.msdbList.add(new MSDB("SQL_Server", BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.FALSE, BOOLEAN_PARAM.TRUE));
+        content.msdbList.add(new MSDB("None_DB", BOOLEAN_PARAM.FALSE, BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.TRUE));
+        //VCS
+        content.vcsList.add(new VCS("Aegis", TEAM_SIZE.BIG_TEAM, BOOLEAN_PARAM.TRUE));
+        content.vcsList.add(new VCS("Arch", TEAM_SIZE.NORMAL_TEAM, BOOLEAN_PARAM.TRUE));
+        content.vcsList.add(new VCS("Bazaar", TEAM_SIZE.NORMAL_TEAM, BOOLEAN_PARAM.FALSE));
+        content.vcsList.add(new VCS("CVS", TEAM_SIZE.SMALL_TEAM, BOOLEAN_PARAM.TRUE));
+        content.vcsList.add(new VCS("Git", TEAM_SIZE.BIG_TEAM, BOOLEAN_PARAM.FALSE));
+        content.vcsList.add(new VCS("Mercurial", TEAM_SIZE.SMALL_TEAM, BOOLEAN_PARAM.TRUE));
+        content.vcsList.add(new VCS("Monotone", TEAM_SIZE.ALONE, BOOLEAN_PARAM.FALSE));
+        content.vcsList.add(new VCS("RCS", TEAM_SIZE.NORMAL_TEAM, BOOLEAN_PARAM.FALSE));
+        content.vcsList.add(new VCS("SubVersion", TEAM_SIZE.ALONE, BOOLEAN_PARAM.TRUE));
     }
 }

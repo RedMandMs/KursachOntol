@@ -157,3 +157,13 @@
 2015.05.15 04:09:59.823 MSK INFO: *** SYSTEM START ***
 2015.05.15 04:10:01.740 MSK WARNING: [Local Folder Repository] The specified file must be a directory. (D:\Учёба\Магистратура 5 курс 2 семестр\Методы оптимизации\Labs\Otolog-Kursach\plugins\edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
 2015.05.15 04:10:02.616 MSK INFO: Rule engine 'SWRLJessBridge' registered with the SWRLTab bridge. -- BridgeFactory.registerBridge()
+2015.05.15 05:07:27.401 MSK INFO: *** SYSTEM START ***
+2015.05.15 05:07:29.341 MSK WARNING: [Local Folder Repository] The specified file must be a directory. (D:\Учёба\Магистратура 5 курс 2 семестр\Методы оптимизации\Labs\Otolog-Kursach\plugins\edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2015.05.15 05:07:30.025 MSK INFO: Rule engine 'SWRLJessBridge' registered with the SWRLTab bridge. -- BridgeFactory.registerBridge()
+2015.05.15 05:07:42.403 MSK WARNING: [Local Folder Repository] The specified file must be a directory. (D:\Учёба\Магистратура 5 курс 2 семестр\Методы оптимизации\Labs\Otolog-Kursach\plugins\edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2015.05.15 05:12:21.079 MSK INFO: *** SYSTEM START ***
+2015.05.15 05:12:22.934 MSK WARNING: [Local Folder Repository] The specified file must be a directory. (D:\Учёба\Магистратура 5 курс 2 семестр\Методы оптимизации\Labs\Otolog-Kursach\plugins\edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2015.05.15 05:12:23.771 MSK INFO: Rule engine 'SWRLJessBridge' registered with the SWRLTab bridge. -- BridgeFactory.registerBridge()
+2015.05.15 05:13:31.332 MSK INFO: *** SYSTEM START ***
+2015.05.15 05:13:33.199 MSK WARNING: [Local Folder Repository] The specified file must be a directory. (D:\Учёба\Магистратура 5 курс 2 семестр\Методы оптимизации\Labs\Otolog-Kursach\plugins\edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2015.05.15 05:13:33.904 MSK INFO: Rule engine 'SWRLJessBridge' registered with the SWRLTab bridge. -- BridgeFactory.registerBridge()
