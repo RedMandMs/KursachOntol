@@ -736,10 +736,22 @@ public class Content {
         }
     }
 
-	public void saveFile(File dir) {
+	public void saveAsFile(File dir) {
 		readOntology();
 		try {
 			File saveFile = new File(dir+"/newOntology.owl");
+			owlModel.save(saveFile.toURI());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void saveFile(File dir) {
+		readOntology();
+		try {
+			File saveFile = new File(dir.toString());
 			owlModel.save(saveFile.toURI());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

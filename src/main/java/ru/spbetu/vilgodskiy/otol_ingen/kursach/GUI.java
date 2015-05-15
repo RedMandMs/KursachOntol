@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -387,7 +388,7 @@ public class GUI {
             jFileChooser.showOpenDialog(mainFrame);
             File dir = jFileChooser.getSelectedFile();
 
-            content.saveFile(dir);
+            content.saveAsFile(dir);
 
             //установление выбранной дирректории директоией по-умолчанию
             defaultDir = dir;
@@ -397,14 +398,19 @@ public class GUI {
     private class SaveOWLBtnListener implements ActionListener{
 
         public void actionPerformed(ActionEvent e) {
-            content.runSWRL();
+            content.saveFile(processedFile);
         }
     }
 
     private class CreateOWLBtnListener implements ActionListener{
 
         public void actionPerformed(ActionEvent e) {
-            //TODO
+            content.owlModel = null;
+            content.bspList = new ArrayList<BSP>();
+            content.guiLibList = new ArrayList<GUILib>();
+            content.logLibList = new ArrayList<LogLib>();
+            content.msdbList = new ArrayList<MSDB>();
+            content.vcsList = new ArrayList<VCS>();
         }
     }
 

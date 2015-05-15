@@ -116,6 +116,7 @@ public class UserQuery {
         queryPanel.add(new JLabel(suitableVCS.toString()));*/
 
         this.queryPanel = queryPanel;
+        readAllRequeres();
         return queryPanel;
     }
 
