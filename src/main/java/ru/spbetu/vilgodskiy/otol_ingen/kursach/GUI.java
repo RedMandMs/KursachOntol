@@ -139,8 +139,6 @@ public class GUI {
          * Панель кнопок редактирования
          */
         JPanel editPanel = new JPanel();
-        editPanel.add(editBtn);
-        //editBtn.addActionListener(new EditInstrListener());
         editPanel.add(deleteBtn);
         deleteBtn.addActionListener(new DeleteInstrListener());
         reviewPanel.add(editPanel, BorderLayout.SOUTH);
