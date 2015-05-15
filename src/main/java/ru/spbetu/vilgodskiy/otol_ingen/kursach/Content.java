@@ -1,19 +1,11 @@
 package ru.spbetu.vilgodskiy.otol_ingen.kursach;
 
-import com.hp.hpl.jena.query.QueryException;
-import edu.stanford.smi.protege.exception.OntologyLoadException;
-import edu.stanford.smi.protegex.owl.ProtegeOWL;
-import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
-import edu.stanford.smi.protegex.owl.model.*;
-import edu.stanford.smi.protegex.owl.model.query.QueryResults;
-import edu.stanford.smi.protegex.owl.swrl.SWRLRuleEngine;
-import edu.stanford.smi.protegex.owl.swrl.SWRLRuleEngineFactory;
-import edu.stanford.smi.protegex.owl.swrl.bridge.OWLAxiom;
-import edu.stanford.smi.protegex.owl.swrl.bridge.SWRLRuleEngineBridge;
-import edu.stanford.smi.protegex.owl.swrl.exceptions.SWRLRuleEngineException;
-import edu.stanford.smi.protegex.owl.swrl.model.SWRLFactory;
-import edu.stanford.smi.protegex.owl.swrl.model.SWRLImp;
-import edu.stanford.smi.protegex.owl.swrl.parser.SWRLParseException;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.BOOLEAN_PARAM;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.BSP.BSP;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.BSP.BSP_ADV;
@@ -26,11 +18,26 @@ import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.VCS.TEAM_SIZE;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.VCS.VCS;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.user_query.UserQuery;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import com.hp.hpl.jena.query.QueryException;
+
+import edu.stanford.smi.protege.exception.OntologyLoadException;
+import edu.stanford.smi.protegex.owl.ProtegeOWL;
+import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
+import edu.stanford.smi.protegex.owl.model.OWLDatatypeProperty;
+import edu.stanford.smi.protegex.owl.model.OWLIndividual;
+import edu.stanford.smi.protegex.owl.model.OWLNamedClass;
+import edu.stanford.smi.protegex.owl.model.OWLObjectProperty;
+import edu.stanford.smi.protegex.owl.model.OWLUnionClass;
+import edu.stanford.smi.protegex.owl.model.RDFObject;
+import edu.stanford.smi.protegex.owl.model.query.QueryResults;
+import edu.stanford.smi.protegex.owl.swrl.SWRLRuleEngine;
+import edu.stanford.smi.protegex.owl.swrl.SWRLRuleEngineFactory;
+import edu.stanford.smi.protegex.owl.swrl.bridge.OWLAxiom;
+import edu.stanford.smi.protegex.owl.swrl.bridge.SWRLRuleEngineBridge;
+import edu.stanford.smi.protegex.owl.swrl.exceptions.SWRLRuleEngineException;
+import edu.stanford.smi.protegex.owl.swrl.model.SWRLFactory;
+import edu.stanford.smi.protegex.owl.swrl.model.SWRLImp;
+import edu.stanford.smi.protegex.owl.swrl.parser.SWRLParseException;
 
 /**
  * Created by Vred.L.Hom on 06.05.2015.
@@ -379,11 +386,11 @@ public class Content {
      */
     private void readAllIndividuals(){
 
-        bspList = new ArrayList<>();
-        guiLibList = new ArrayList<>();
-        logLibList = new ArrayList<>();
-        msdbList = new ArrayList<>();
-        vcsList = new ArrayList<>();
+        bspList = new ArrayList<BSP>();
+        guiLibList = new ArrayList<GUILib>();
+        logLibList = new ArrayList<LogLib>();
+        msdbList = new ArrayList<MSDB>();
+        vcsList = new ArrayList<VCS>();
 
         List<RDFObject> bspOWLList = readOWLClassIndividuals(BuildSystemProject_class_name);
         List<RDFObject> guiLibOWLList = readOWLClassIndividuals(GUILib_class_name);
@@ -401,7 +408,7 @@ public class Content {
      * @return - список всех экземпляров заданного класса
      */
     private List<RDFObject> readOWLClassIndividuals(String className){
-        ArrayList<RDFObject> instrumentsOWL = new ArrayList<>();
+        ArrayList<RDFObject> instrumentsOWL = new ArrayList<RDFObject>();
         String sparql_text = "PREFIX f: <http://www.owl-ontologies.com/JavaInstruments.owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> SELECT ?instrument WHERE { ?instrument rdf:type f:"+ className +". }";
         try
         {
@@ -498,7 +505,7 @@ public class Content {
             //userQuery = new UserQuery(this, complexity, avalibDB, teamSize, bspAdv, guiAdv, multyplat, avalAndr, needlogging);
             //suitable instruments
             //BSP
-            userQuery.suitableBSP = new ArrayList<>();
+            userQuery.suitableBSP = new ArrayList<String>();
             List<RDFObject> sutBSP_RDF = readSutableObjProperty(sutable_BSP_relation_name);
             for(RDFObject bspRDF : sutBSP_RDF){
                 String test = bspRDF.getBrowserText();
@@ -506,28 +513,28 @@ public class Content {
                 userQuery.suitableBSP.add(bsp);
             }
             //GUILib
-            userQuery.suitableGUILib = new ArrayList<>();
+            userQuery.suitableGUILib = new ArrayList<String>();
             List<RDFObject> sutGUILibRDF = readSutableObjProperty(sutable_GUILib_relation_name);
             for(RDFObject guiRDF : sutGUILibRDF){
                 String gui = guiRDF.getBrowserText();
                 userQuery.suitableGUILib.add(gui);
             }
             //LogLib
-            userQuery.suitableLogLib = new ArrayList<>();
+            userQuery.suitableLogLib = new ArrayList<String>();
             List<RDFObject> sutLogLibRDF = readSutableObjProperty(suitable_LogLib_relation_name);
             for(RDFObject logRDF : sutLogLibRDF){
                 String log = logRDF.getBrowserText();
                 userQuery.suitableLogLib.add(log);
             }
             //MSDB
-            userQuery.suitableMSDB = new ArrayList<>();
+            userQuery.suitableMSDB = new ArrayList<String>();
             List<RDFObject> sutMSDBRDF = readSutableObjProperty(sutable_DBMS_relation_name);
             for(RDFObject msdbRDF : sutMSDBRDF){
                 String msdb = msdbRDF.getBrowserText();
                 userQuery.suitableMSDB.add(msdb);
             }
             //VCS
-            userQuery.suitableVCS = new ArrayList<>();
+            userQuery.suitableVCS = new ArrayList<String>();
             List<RDFObject> sutVCS_RDF = readSutableObjProperty(sutable_VCS_relation_name);
             for(RDFObject vcsRDF : sutVCS_RDF){
                 String vcs = vcsRDF.getBrowserText();
@@ -539,7 +546,7 @@ public class Content {
 
     private List<RDFObject> readSutableObjProperty(String properyName){
 
-        ArrayList<RDFObject> sutInstrumentsOWL = new ArrayList<>();
+        ArrayList<RDFObject> sutInstrumentsOWL = new ArrayList<RDFObject>();
 
         String sparql_text = "PREFIX f: <http://www.owl-ontologies.com/JavaInstruments.owl#> " +
                 "SELECT ?instrument WHERE { f:" + userQuery.toString() + " f:"+ properyName + " ?instrument.}";
@@ -706,4 +713,27 @@ public class Content {
             e.printStackTrace();
         }
     }
+
+	public void saveFile(File dir) {
+		readOntology();
+		try {
+			File saveFile = new File(dir+"/newOntology.owl");
+			owlModel.save(saveFile.toURI());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void openFile(File processedFile) {
+		
+		 try{
+			 owlModel = ProtegeOWL.createJenaOWLModelFromURI(processedFile.toURI().toString());
+		 }catch(Exception ex){
+			 ex.printStackTrace();
+		 }
+		 updateContent();
+		 
+	}
 }

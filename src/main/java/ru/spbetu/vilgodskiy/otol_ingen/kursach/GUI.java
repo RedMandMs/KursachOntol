@@ -1,6 +1,22 @@
 package ru.spbetu.vilgodskiy.otol_ingen.kursach;
 
-import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+
+import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.BOOLEAN_PARAM;
+import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.Instrument;
+import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.TYPES_INSTRUMENTS;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.BSP.BSP;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.BSP.BSP_ADV;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.GUILib.GUILib;
@@ -11,12 +27,6 @@ import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.MSDB.MSDB;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.VCS.TEAM_SIZE;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.VCS.VCS;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.user_query.UserQuery;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 
 /**
  * Created by Vred.L.Hom on 06.05.2015.
@@ -207,25 +217,24 @@ public class GUI {
             this.choisePanel = choisePanel;
         }
 
-        @Override
         public void actionPerformed(ActionEvent e) {
             TYPES_INSTRUMENTS selectedType = (TYPES_INSTRUMENTS) typeInstrCB.getSelectedItem();
             choisePanel.remove(intrumentBoxReview);
             switch (selectedType){
                 case BSP:
-                    intrumentBoxReview = new JComboBox<>(content.getBspList().toArray());
+                    intrumentBoxReview = new JComboBox<Object>(content.getBspList().toArray());
                     break;
                 case GUI_LIB:
-                    intrumentBoxReview = new JComboBox<>(content.getGuiLibList().toArray());
+                    intrumentBoxReview = new JComboBox<Object>(content.getGuiLibList().toArray());
                     break;
                 case LOG_LIB:
-                    intrumentBoxReview = new JComboBox<>(content.getLogLibList().toArray());
+                    intrumentBoxReview = new JComboBox<Object>(content.getLogLibList().toArray());
                     break;
                 case MSDB:
-                    intrumentBoxReview = new JComboBox<>(content.getMsdbList().toArray());
+                    intrumentBoxReview = new JComboBox<Object>(content.getMsdbList().toArray());
                     break;
                 case VCS:
-                    intrumentBoxReview = new JComboBox<>(content.getVcsList().toArray());
+                    intrumentBoxReview = new JComboBox<Object>(content.getVcsList().toArray());
                     break;
             }
             choisePanel.add(intrumentBoxReview);
@@ -242,7 +251,6 @@ public class GUI {
             this.instrumentsCB = instrumentsCB;
         }
 
-        @Override
         public void actionPerformed(ActionEvent e) {
             Instrument newReviewingInstrument = (Instrument) instrumentsCB.getSelectedItem();
             changeInstrReview(newReviewingInstrument.toDesignReviewPanel());
@@ -257,7 +265,6 @@ public class GUI {
             this.typeInstrumentsCB = typeInstrumentsCB;
         }
 
-        @Override
         public void actionPerformed(ActionEvent e) {
             TYPES_INSTRUMENTS selectedType = (TYPES_INSTRUMENTS)typeInstrumentsCB.getSelectedItem();
             createPanel.remove(currentCreateInstrPanel);
@@ -291,7 +298,6 @@ public class GUI {
             this.typeInstrumentsCB = typeInstrumentsCB;
         }
 
-        @Override
         public void actionPerformed(ActionEvent e) {
             TYPES_INSTRUMENTS selectedType = (TYPES_INSTRUMENTS)typeInstrumentsCB.getSelectedItem();
             switch (selectedType){
@@ -346,7 +352,6 @@ public class GUI {
 
     private class OpenOWLBtnListener implements ActionListener{
 
-        @Override
         public void actionPerformed(ActionEvent e) {
             //Работа с выбором и обработкой файла
             JFileChooser jFileChooser = new JFileChooser();
@@ -358,8 +363,10 @@ public class GUI {
 
             //назначение обрабатываемого файла
             processedFile = jFileChooser.getSelectedFile();
+            
+            
 
-            //TODO:content.openFile(processedFile);
+            content.openFile(processedFile);
             //установление выбранной дирректории директоией по-умолчанию
             defaultDir = new File(processedFile.getAbsolutePath());
         }
@@ -367,7 +374,6 @@ public class GUI {
 
     private class SaveAsOWLBtnListener implements ActionListener{
 
-        @Override
         public void actionPerformed(ActionEvent e) {
             //Создание панели выбора директории для сохранения файла
             JFileChooser jFileChooser = new JFileChooser();
@@ -381,7 +387,7 @@ public class GUI {
             jFileChooser.showOpenDialog(mainFrame);
             File dir = jFileChooser.getSelectedFile();
 
-            //TODO:content.saveFile(dir);
+            content.saveFile(dir);
 
             //установление выбранной дирректории директоией по-умолчанию
             defaultDir = dir;
@@ -390,7 +396,6 @@ public class GUI {
 
     private class SaveOWLBtnListener implements ActionListener{
 
-        @Override
         public void actionPerformed(ActionEvent e) {
             content.runSWRL();
         }
@@ -398,7 +403,6 @@ public class GUI {
 
     private class CreateOWLBtnListener implements ActionListener{
 
-        @Override
         public void actionPerformed(ActionEvent e) {
             //TODO
         }
@@ -406,7 +410,6 @@ public class GUI {
 
     private class DeleteInstrListener implements ActionListener{
 
-        @Override
         public void actionPerformed(ActionEvent e) {
             TYPES_INSTRUMENTS selectedType = (TYPES_INSTRUMENTS) typeInstrumentBoxReview.getSelectedItem();
             switch (selectedType){
@@ -470,7 +473,7 @@ public class GUI {
         content.logLibList.add(new LogLib("JUL", COMPLEXITY.NORMAL, BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.TRUE));
         content.logLibList.add(new LogLib("LogBack", COMPLEXITY.ESYE, BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.FALSE));
         content.logLibList.add(new LogLib("LogForJ", COMPLEXITY.DIFFICULT, BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.TRUE));
-        content.logLibList.add(new LogLib("NoneLog", COMPLEXITY.ESYE, BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.TRUE));
+        content.logLibList.add(new LogLib("NoneLog", COMPLEXITY.ESYE, BOOLEAN_PARAM.FALSE, BOOLEAN_PARAM.TRUE));
         //MSDB
         content.msdbList.add(new MSDB("MySQL", BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.FALSE, BOOLEAN_PARAM.TRUE));
         content.msdbList.add(new MSDB("PostgreSQL", BOOLEAN_PARAM.TRUE, BOOLEAN_PARAM.FALSE, BOOLEAN_PARAM.FALSE));

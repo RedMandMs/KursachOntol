@@ -1,18 +1,23 @@
 package ru.spbetu.vilgodskiy.otol_ingen.kursach.user_query;
 
+import java.awt.Component;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.Content;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.BOOLEAN_PARAM;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.BSP.BSP_ADV;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.GUILib.GUI_ADV;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.LogLib.COMPLEXITY;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.VCS.TEAM_SIZE;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.*;
-import java.util.List;
 
 /**
  * Created by Vred.L.Hom on 06.05.2015.
@@ -21,7 +26,7 @@ public class UserQuery {
 
     Content content;
 
-    ArrayList<Component> components = new ArrayList<>();
+    ArrayList<Component> components = new ArrayList<Component>();
 
     public UserQuery(Content content) {
         this.content = content;
@@ -61,11 +66,11 @@ public class UserQuery {
 
     private JPanel queryPanel;
 
-    public List<String> suitableBSP = new ArrayList<>();
-    public List<String> suitableGUILib = new ArrayList<>();
-    public List<String> suitableLogLib = new ArrayList<>();
-    public List<String> suitableMSDB = new ArrayList<>();
-    public List<String> suitableVCS = new ArrayList<>();
+    public List<String> suitableBSP = new ArrayList<String>();
+    public List<String> suitableGUILib = new ArrayList<String>();
+    public List<String> suitableLogLib = new ArrayList<String>();
+    public List<String> suitableMSDB = new ArrayList<String>();
+    public List<String> suitableVCS = new ArrayList<String>();
 
     public static JButton suitableBtn = new JButton("Найти подходящие инструменты");
 
@@ -131,7 +136,7 @@ public class UserQuery {
         for(Component component : components){
             queryPanel.remove(component);
         }
-        components = new ArrayList<>();
+        components = new ArrayList<Component>();
 
         if(suitableBSP.size() != 0) {
             JLabel jLabel1 = new JLabel("Подходящие системы сборки проектов:");
@@ -204,7 +209,6 @@ public class UserQuery {
 
     private class SuitableInstrumentsBtnListner implements ActionListener{
 
-        @Override
         public void actionPerformed(ActionEvent e) {
             readAllRequeres();
             content.runSWRL();

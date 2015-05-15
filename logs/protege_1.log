@@ -5,3 +5,9 @@
 2015.05.13 02:42:21.587 MSK WARNING: [Local Folder Repository] The specified file must be a directory. (D:\Учёба\Магистратура 5 курс 2 семестр\Методы оптимизации\Labs\Otolog-Kursach\plugins\edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
 2015.05.13 02:43:03.249 MSK WARNING: [Local Folder Repository] The specified file must be a directory. (D:\Учёба\Магистратура 5 курс 2 семестр\Методы оптимизации\Labs\Otolog-Kursach\plugins\edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
 2015.05.13 02:43:03.478 MSK WARNING: [Local Folder Repository] The specified file must be a directory. (D:\Учёба\Магистратура 5 курс 2 семестр\Методы оптимизации\Labs\Otolog-Kursach\plugins\edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2015.05.15 14:05:25.875 MSK INFO: *** SYSTEM START ***
+2015.05.15 14:05:26.281 MSK WARNING: [Local Folder Repository] The specified file must be a directory. (C:\Projects\introduction\Ontology-Kurs\plugins\edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2015.05.15 14:05:26.455 MSK INFO: Rule engine 'SWRLJessBridge' registered with the SWRLTab bridge. -- BridgeFactory.registerBridge()
+2015.05.15 14:05:30.118 MSK WARNING: [Local Folder Repository] The specified file must be a directory. (C:\Projects\introduction\Ontology-Kurs\plugins\edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2015.05.15 14:06:50.812 MSK WARNING: [Local Folder Repository] The specified file must be a directory. (C:\Projects\introduction\Ontology-Kurs\plugins\edu.stanford.smi.protegex.owl) -- LocalFolderRepository.update()
+2015.05.15 14:07:17.373 MSK INFO: ... saving successful to: C:\Projects\introduction\Ontology-Kurs\Successful.owl -- Protege2Jena.saveAll()
