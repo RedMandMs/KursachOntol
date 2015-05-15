@@ -281,22 +281,47 @@ public class GUI {
             switch (selectedType){
                 case BSP:
                     BSP bsp = BSP.getNewBSP(createPanel);
+                    for(BSP bspIn : content.bspList){
+                        if(bspIn.getName().equals(bspIn.getName())){
+                            return;
+                        }
+                    }
                     content.getBspList().add(bsp);
                     break;
                 case GUI_LIB:
                     GUILib gui = GUILib.getNewGUILib(createPanel);
+                    for(GUILib guiLib : content.guiLibList){
+                        if(guiLib.getName().equals(gui.getName())){
+                            return;
+                        }
+                    }
                     content.getGuiLibList().add(gui);
                     break;
                 case LOG_LIB:
                     LogLib logLib = LogLib.getNewLogLib(createPanel);
+                    for(LogLib logLibIn : content.logLibList){
+                        if(logLibIn.getName().equals(logLib.getName())){
+                            return;
+                        }
+                    }
                     content.getLogLibList().add(logLib);
                     break;
                 case MSDB:
                     MSDB msdb = MSDB.getNewMSDB(createPanel);
+                    for(MSDB msdbIn : content.msdbList){
+                        if(msdbIn.getName().equals(msdb.getName())){
+                            return;
+                        }
+                    }
                     content.getMsdbList().add(msdb);
                     break;
                 case VCS:
                     VCS vcs = VCS.getNewVCS(createPanel);
+                    for(VCS vcsIn : content.vcsList){
+                        if(vcsIn.getName().equals(vcs.getName())){
+                            return;
+                        }
+                    }
                     content.getVcsList().add(vcs);
                     break;
             }
@@ -318,7 +343,7 @@ public class GUI {
             //назначение обрабатываемого файла
             processedFile = jFileChooser.getSelectedFile();
 
-            content.openFile(processedFile);
+            //TODO:content.openFile(processedFile);
             //установление выбранной дирректории директоией по-умолчанию
             defaultDir = new File(processedFile.getAbsolutePath());
         }
@@ -340,7 +365,7 @@ public class GUI {
             jFileChooser.showOpenDialog(mainFrame);
             File dir = jFileChooser.getSelectedFile();
 
-            content.saveFile(dir);
+            //TODO:content.saveFile(dir);
 
             //установление выбранной дирректории директоией по-умолчанию
             defaultDir = dir;

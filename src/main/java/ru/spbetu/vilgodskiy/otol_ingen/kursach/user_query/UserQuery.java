@@ -2,21 +2,17 @@ package ru.spbetu.vilgodskiy.otol_ingen.kursach.user_query;
 
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.Content;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.BOOLEAN_PARAM;
-import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.BSP.BSP;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.BSP.BSP_ADV;
-import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.GUILib.GUILib;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.GUILib.GUI_ADV;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.LogLib.COMPLEXITY;
-import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.LogLib.LogLib;
-import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.MSDB.MSDB;
 import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.VCS.TEAM_SIZE;
-import ru.spbetu.vilgodskiy.otol_ingen.kursach.instruments.VCS.VCS;
 
 import javax.swing.*;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
+import java.util.List;
 
 /**
  * Created by Vred.L.Hom on 06.05.2015.
@@ -24,6 +20,8 @@ import java.util.*;
 public class UserQuery {
 
     Content content;
+
+    ArrayList<Component> components = new ArrayList<>();
 
     public UserQuery(Content content) {
         this.content = content;
@@ -63,11 +61,11 @@ public class UserQuery {
 
     private JPanel queryPanel;
 
-    public List<String> suitableBSP;
-    public List<String> suitableGUILib;
-    public List<String> suitableLogLib;
-    public List<String> suitableMSDB;
-    public List<String> suitableVCS;
+    public List<String> suitableBSP = new ArrayList<>();
+    public List<String> suitableGUILib = new ArrayList<>();
+    public List<String> suitableLogLib = new ArrayList<>();
+    public List<String> suitableMSDB = new ArrayList<>();
+    public List<String> suitableVCS = new ArrayList<>();
 
     public static JButton suitableBtn = new JButton("Найти подходящие инструменты");
 
@@ -99,7 +97,7 @@ public class UserQuery {
         multyPlatfBox = new JComboBox(BOOLEAN_PARAM.values());
         queryPanel.add(multyPlatfBox);
         queryPanel.add(suitableBtn);
-        //TODO: Листнер
+        suitableBtn.addActionListener(new SuitableInstrumentsBtnListner());
         queryPanel.add(new JLabel(""));
         /*queryPanel.add(new JLabel("Подходящая система сборки проекта:"));
         queryPanel.add(new JLabel(suitableBSP.toString()));
@@ -129,42 +127,82 @@ public class UserQuery {
 
 
     private void fillSuitableInstruments(UserQuery readyQuery) {
+        queryPanel.updateUI();
+        for(Component component : components){
+            queryPanel.remove(component);
+        }
+        components = new ArrayList<>();
 
-        queryPanel.add(new JLabel("Подходящие системы сборки проектов:"));
-        String sutableBSP = "";
-        for(String bsp : suitableBSP){
-            sutableBSP = sutableBSP + ", " + bsp;
+        if(suitableBSP.size() != 0) {
+            JLabel jLabel1 = new JLabel("Подходящие системы сборки проектов:");
+            components.add(jLabel1);
+            queryPanel.add(jLabel1);
+            String sutableBSP = "";
+            for (String bsp : suitableBSP) {
+                sutableBSP = sutableBSP + ", " + bsp;
+            }
+            JLabel jLabel2 = new JLabel(sutableBSP.substring(1));
+            components.add(jLabel2);
+            queryPanel.add(jLabel2);
         }
-        queryPanel.add(new JLabel(sutableBSP.substring(1)));
-        queryPanel.add(new JLabel("Подходящие библиотеки грфического интерфейса:"));
-        String sutableGUILib = "";
-        for(String guiLib : suitableGUILib){
-            sutableGUILib = sutableGUILib + ", " + guiLib;
+
+        if(suitableGUILib.size() != 0) {
+            JLabel jLabel3 = new JLabel("Подходящие библиотеки грфического интерфейса:");
+            components.add(jLabel3);
+            queryPanel.add(jLabel3);
+            String sutableGUILib = "";
+            for (String guiLib : suitableGUILib) {
+                sutableGUILib = sutableGUILib + ", " + guiLib;
+            }
+            JLabel jLabel4 = new JLabel(sutableGUILib.substring(1));
+            components.add(jLabel4);
+            queryPanel.add(jLabel4);
         }
-        queryPanel.add(new JLabel(sutableGUILib.substring(1)));
-        queryPanel.add(new JLabel("Подходящие библиотеки логирования:"));
-        String sutableLogLib = "";
-        for(String logLib : suitableLogLib){
-            sutableLogLib = sutableLogLib + ", " + logLib;
+
+        if(suitableLogLib.size() != 0) {
+            JLabel jLabel5 = new JLabel("Подходящие библиотеки логирования:");
+            components.add(jLabel5);
+            queryPanel.add(jLabel5);
+            String sutableLogLib = "";
+            for (String logLib : suitableLogLib) {
+                sutableLogLib = sutableLogLib + ", " + logLib;
+            }
+            JLabel jLabel6 = new JLabel(sutableLogLib.substring(1));
+            components.add(jLabel6);
+            queryPanel.add(jLabel6);
         }
-        queryPanel.add(new JLabel(sutableLogLib.substring(1)));
-        queryPanel.add(new JLabel("Подходящие СУБД:"));
-        String sutableMSDB = "";
-        for(String msdb : suitableMSDB){
-            sutableMSDB = sutableMSDB + ", " + msdb;
+
+        if(suitableMSDB.size() !=0) {
+            JLabel jLabel7 = new JLabel("Подходящие СУБД:");
+            components.add(jLabel7);
+            queryPanel.add(jLabel7);
+            String sutableMSDB = "";
+            for (String msdb : suitableMSDB) {
+                sutableMSDB = sutableMSDB + ", " + msdb;
+            }
+            JLabel jLabel8 = new JLabel(sutableMSDB.substring(1));
+            components.add(jLabel8);
+            queryPanel.add(jLabel8);
         }
-        queryPanel.add(new JLabel(sutableMSDB.substring(1)));
-        queryPanel.add(new JLabel("Подходящие система контроля версий:"));
-        String sutableVCS = "";
-        for(String vcs : suitableVCS){
-            sutableVCS = sutableVCS + ", " +vcs;
+
+        if(suitableVCS.size() != 0) {
+            JLabel jLabel9 = new JLabel("Подходящие система контроля версий:");
+            components.add(jLabel9);
+            queryPanel.add(jLabel9);
+            String sutableVCS = "";
+            for (String vcs : suitableVCS) {
+                sutableVCS = sutableVCS + ", " + vcs;
+            }
+            JLabel jLabel10 = new JLabel(sutableVCS.substring(1));
+            components.add(jLabel10);
+            queryPanel.add(jLabel10);
         }
-        queryPanel.add(new JLabel(sutableVCS.substring(1)));
+        queryPanel.updateUI();
     }
 
 
 
-    private class suitableInstrumentsBtnListner implements ActionListener{
+    private class SuitableInstrumentsBtnListner implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
