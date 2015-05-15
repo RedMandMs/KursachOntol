@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e08f07eb-adec-400d-8a6c-de03127c7a58" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\Учёба\Магистратура 5 курс 2 семестр\Методы оптимизации\Labs\Otolog-Kursach\logs\protege_0.log.lck" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/spbetu/vilgodskiy/otol_ingen/kursach/instruments/BSP/BSP_ADV.class" afterPath="$PROJECT_DIR$/target/classes/ru/spbetu/vilgodskiy/otol_ingen/kursach/instruments/BSP/BSP_ADV.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/spbetu/vilgodskiy/otol_ingen/kursach/instruments/LogLib/COMPLEXITY.class" afterPath="$PROJECT_DIR$/target/classes/ru/spbetu/vilgodskiy/otol_ingen/kursach/instruments/LogLib/COMPLEXITY.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/spbetu/vilgodskiy/otol_ingen/kursach/Content.class" afterPath="$PROJECT_DIR$/target/classes/ru/spbetu/vilgodskiy/otol_ingen/kursach/Content.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/spbetu/vilgodskiy/otol_ingen/kursach/instruments/VCS/TEAM_SIZE.class" afterPath="$PROJECT_DIR$/target/classes/ru/spbetu/vilgodskiy/otol_ingen/kursach/instruments/VCS/TEAM_SIZE.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/Content.java" afterPath="$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/Content.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/GUI.java" afterPath="$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/GUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/user_query/UserQuery.java" afterPath="$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/user_query/UserQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protege.properties" afterPath="$PROJECT_DIR$/protege.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/protege_0.log" afterPath="$PROJECT_DIR$/logs/protege_0.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Otolog-Kursach.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -119,8 +109,8 @@
       <file leaf-file-name="GUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46867168">
-              <caret line="283" column="53" selection-start-line="283" selection-start-column="53" selection-end-line="283" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.914787">
+              <caret line="452" column="1" selection-start-line="452" selection-start-column="1" selection-end-line="452" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -831,12 +821,12 @@
       <workItem from="1431551248133" duration="4886000" />
       <workItem from="1431620482701" duration="1391000" />
       <workItem from="1431635975861" duration="2683000" />
-      <workItem from="1431638748015" duration="13179000" />
+      <workItem from="1431638748015" duration="14781000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43175000" />
+    <option name="totallyTimeSpent" value="44777000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -892,8 +882,14 @@
           <line>704</line>
           <properties />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/GUI.java</url>
+          <line>406</line>
+          <properties />
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="53" />
+      <option name="time" value="54" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1347,8 +1343,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/spbetu/vilgodskiy/otol_ingen/kursach/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46867168">
-          <caret line="283" column="53" selection-start-line="283" selection-start-column="53" selection-end-line="283" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.914787">
+          <caret line="452" column="1" selection-start-line="452" selection-start-column="1" selection-end-line="452" selection-end-column="1" />
           <folding />
         </state>
       </provider>

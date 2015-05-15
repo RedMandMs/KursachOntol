@@ -36,6 +36,11 @@ public class GUI {
     //Панель нового создоваемого инструмента
     JPanel currentCreateInstrPanel = new JPanel();
 
+    JButton editBtn = new JButton("Редактировать");
+    JButton deleteBtn = new JButton("Удалить");
+    JComboBox<TYPES_INSTRUMENTS> typeInstrumentBoxReview;
+    JComboBox intrumentBoxReview;
+
     Content content = new Content();
 
     public void toDesign(){
@@ -82,6 +87,7 @@ public class GUI {
         saveAsButton.addActionListener(new SaveAsOWLBtnListener());
         buttonPanel.add(saveAsButton);
 
+
         /**
          * Размер и видимость окна
          */
@@ -102,12 +108,12 @@ public class GUI {
     private JPanel toDesignChooseReviewPanel(){
         JPanel choiseInstrumentPanel = new JPanel();
         choiseInstrumentPanel.add(new JLabel("Выберите инструмент:"));
-        JComboBox<TYPES_INSTRUMENTS> typeInstrumentBox = new JComboBox<TYPES_INSTRUMENTS>(TYPES_INSTRUMENTS.values());
-        JComboBox intrumentBox = new JComboBox();
-        typeInstrumentBox.addActionListener(new ChangeTypeInstrumentListner(typeInstrumentBox, intrumentBox,choiseInstrumentPanel));
-        intrumentBox.addActionListener(new ChangeChoiseInstrListner(intrumentBox));
-        choiseInstrumentPanel.add(typeInstrumentBox);
-        choiseInstrumentPanel.add(intrumentBox);
+        typeInstrumentBoxReview = new JComboBox<TYPES_INSTRUMENTS>(TYPES_INSTRUMENTS.values());
+        intrumentBoxReview = new JComboBox();
+        typeInstrumentBoxReview.addActionListener(new ChangeTypeInstrumentListner(typeInstrumentBoxReview, intrumentBoxReview, choiseInstrumentPanel));
+        intrumentBoxReview.addActionListener(new ChangeChoiseInstrListner(intrumentBoxReview));
+        choiseInstrumentPanel.add(typeInstrumentBoxReview);
+        choiseInstrumentPanel.add(intrumentBoxReview);
 
         return choiseInstrumentPanel;
     }
@@ -129,6 +135,15 @@ public class GUI {
         reviewPanel = new JPanel();
         reviewPanel.add(toDesignChooseReviewPanel(), BorderLayout.NORTH);
         tabbedPane.add("Имеющиеся инструменты", reviewPanel);
+        /**
+         * Панель кнопок редактирования
+         */
+        JPanel editPanel = new JPanel();
+        editPanel.add(editBtn);
+        //editBtn.addActionListener(new EditInstrListener());
+        editPanel.add(deleteBtn);
+        deleteBtn.addActionListener(new DeleteInstrListener());
+        reviewPanel.add(editPanel, BorderLayout.SOUTH);
     }
 
     /**
@@ -179,41 +194,38 @@ public class GUI {
 
         //Комбо-бокс с типами инструментов
         private JComboBox<TYPES_INSTRUMENTS> typeInstrCB;
-        //Комбо-бокс с конкретными инструментами
-        private JComboBox instrumentsCB;
         //Панель выбора инструментов
         private JPanel choisePanel;
 
 
         public ChangeTypeInstrumentListner(JComboBox<TYPES_INSTRUMENTS> typeInstrCB, JComboBox instrumentsCB, JPanel choisePanel) {
             this.typeInstrCB = typeInstrCB;
-            this.instrumentsCB = instrumentsCB;
             this.choisePanel = choisePanel;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
             TYPES_INSTRUMENTS selectedType = (TYPES_INSTRUMENTS) typeInstrCB.getSelectedItem();
-            choisePanel.remove(instrumentsCB);
+            choisePanel.remove(intrumentBoxReview);
             switch (selectedType){
                 case BSP:
-                    instrumentsCB = new JComboBox<>(content.getBspList().toArray());
+                    intrumentBoxReview = new JComboBox<>(content.getBspList().toArray());
                     break;
                 case GUI_LIB:
-                    instrumentsCB = new JComboBox<>(content.getGuiLibList().toArray());
+                    intrumentBoxReview = new JComboBox<>(content.getGuiLibList().toArray());
                     break;
                 case LOG_LIB:
-                    instrumentsCB = new JComboBox<>(content.getLogLibList().toArray());
+                    intrumentBoxReview = new JComboBox<>(content.getLogLibList().toArray());
                     break;
                 case MSDB:
-                    instrumentsCB = new JComboBox<>(content.getMsdbList().toArray());
+                    intrumentBoxReview = new JComboBox<>(content.getMsdbList().toArray());
                     break;
                 case VCS:
-                    instrumentsCB = new JComboBox<>(content.getVcsList().toArray());
+                    intrumentBoxReview = new JComboBox<>(content.getVcsList().toArray());
                     break;
             }
-            choisePanel.add(instrumentsCB);
-            instrumentsCB.addActionListener(new ChangeChoiseInstrListner(instrumentsCB));
+            choisePanel.add(intrumentBoxReview);
+            intrumentBoxReview.addActionListener(new ChangeChoiseInstrListner(intrumentBoxReview));
             choisePanel.updateUI();
         }
     }
@@ -282,7 +294,7 @@ public class GUI {
                 case BSP:
                     BSP bsp = BSP.getNewBSP(createPanel);
                     for(BSP bspIn : content.bspList){
-                        if(bspIn.getName().equals(bspIn.getName())){
+                        if(bspIn.getName().equals(bsp.getName())){
                             return;
                         }
                     }
@@ -385,6 +397,57 @@ public class GUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             //TODO
+        }
+    }
+
+    private class DeleteInstrListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            TYPES_INSTRUMENTS selectedType = (TYPES_INSTRUMENTS) typeInstrumentBoxReview.getSelectedItem();
+            switch (selectedType){
+                case BSP:
+                    BSP bsp = (BSP) intrumentBoxReview.getSelectedItem();
+                    for(BSP bspIn : content.bspList){
+                        if(bsp == bspIn){
+                            content.bspList.remove(bspIn);
+                        }
+                    }
+                    break;
+                case GUI_LIB:
+                    GUILib guiLib = (GUILib) intrumentBoxReview.getSelectedItem();
+                    for(GUILib guiLib1In : content.guiLibList){
+                        if(guiLib == guiLib1In){
+                            content.guiLibList.remove(guiLib1In);
+                        }
+                    }
+                    break;
+                case LOG_LIB:
+                    LogLib logLib = (LogLib) intrumentBoxReview.getSelectedItem();
+                    for(LogLib guiLibIn : content.logLibList){
+                        if(logLib == guiLibIn){
+                            content.guiLibList.remove(guiLibIn);
+                        }
+                    }
+                    break;
+                case MSDB:
+                    MSDB msdb = (MSDB) intrumentBoxReview.getSelectedItem();
+                    for(MSDB msdbIn : content.msdbList){
+                        if(msdb == msdbIn){
+                            content.guiLibList.remove(msdbIn);
+                        }
+                    }
+                    break;
+                case VCS:
+                    VCS vcs = (VCS) intrumentBoxReview.getSelectedItem();
+                    for(VCS vcsIn : content.vcsList){
+                        if(vcs == vcsIn){
+                            content.guiLibList.remove(vcsIn);
+                        }
+                    }
+                    break;
+            }
+            createPanel.updateUI();
         }
     }
 }
