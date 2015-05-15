@@ -293,6 +293,26 @@ public class Content {
         team_size_property.setDomain(domain_Team_class);
         team_size_property.setRange(owlModel.getXSDstring());
     }
+    
+    private void getDataProperty(){
+    	bsp_advanteges_property = owlModel.getOWLDatatypeProperty(owlURI + bsp_advanteges_property_name);
+    	available_android_property = owlModel.getOWLDatatypeProperty(owlURI + bsp_advanteges_property_name);
+    	avalib_db_property = owlModel.getOWLDatatypeProperty(owlURI + avalib_db_property_name);
+    	available_android_property = owlModel.getOWLDatatypeProperty(owlURI + available_android_property_name);
+    	complexity_project_property = owlModel.getOWLDatatypeProperty(owlURI + complexity_project_property_name);
+    	gui_advant_property = owlModel.getOWLDatatypeProperty(owlURI + gui_advant_property_name);
+    	multy_platform_property = owlModel.getOWLDatatypeProperty(owlURI + multy_platform_property_name);
+    	need_logging_property = owlModel.getOWLDatatypeProperty(owlURI + need_logging_property_name);
+    	team_size_property = owlModel.getOWLDatatypeProperty(owlURI + team_size_property_name);
+    }
+    
+    private void getObjectProperty(){
+    	sutable_BSP_relation = owlModel.getOWLObjectProperty(owlURI + sutable_BSP_relation_name);
+    	sutable_GUILib_relation = owlModel.getOWLObjectProperty(owlURI + sutable_GUILib_relation_name);
+    	suitable_LogLib_relation = owlModel.getOWLObjectProperty(owlURI + suitable_LogLib_relation_name);
+    	sutable_DBMS_relation = owlModel.getOWLObjectProperty(owlURI + sutable_DBMS_relation_name);
+    	sutable_VCS_relation = owlModel.getOWLObjectProperty(owlURI + sutable_VCS_relation_name);
+    }
 
     /**
      * Создание объектных полей
@@ -442,15 +462,7 @@ public class Content {
                                  List<RDFObject> logLibOWLList, List<RDFObject> msdbOWLList,
                                  List<RDFObject> vcsOWLList, List<RDFObject> userQueryOWLList){
 
-        //BSP
-        for(RDFObject bspRDF : bspOWLList){
-            OWLIndividual bspOWL = owlModel.getOWLIndividual(bspRDF.getBrowserText());
-            String name = bspOWL.getName().substring(owlURI.length());
-            BSP_ADV bspAdv = BSP_ADV.getInd((String) bspOWL.getPropertyValue(bsp_advanteges_property));
-            BOOLEAN_PARAM avalAndr = BOOLEAN_PARAM.getInd((Boolean) bspOWL.getPropertyValue(available_android_property));
-            BOOLEAN_PARAM multyplat = BOOLEAN_PARAM.getInd((Boolean) bspOWL.getPropertyValue(multy_platform_property));
-            bspList.add(new BSP(name, bspAdv, avalAndr, multyplat));
-        }
+
 
         //GUILib
         for(RDFObject guiRDF : guiOWLList){
@@ -459,6 +471,16 @@ public class Content {
             GUI_ADV guiAdv = GUI_ADV.getInd((String) guiOWL.getPropertyValue(gui_advant_property));
             BOOLEAN_PARAM multyplat = BOOLEAN_PARAM.getInd((Boolean) guiOWL.getPropertyValue(multy_platform_property));
             guiLibList.add(new GUILib(name, guiAdv, multyplat));
+        }
+        
+        //BSP
+        for(RDFObject bspRDF : bspOWLList){
+            OWLIndividual bspOWL = owlModel.getOWLIndividual(bspRDF.getBrowserText());
+            String name = bspOWL.getName().substring(owlURI.length());
+            BSP_ADV bspAdv = BSP_ADV.getInd((String) bspOWL.getPropertyValue(bsp_advanteges_property));
+            BOOLEAN_PARAM avalAndr = BOOLEAN_PARAM.getInd((Boolean) bspOWL.getPropertyValue(available_android_property));
+            BOOLEAN_PARAM multyplat = BOOLEAN_PARAM.getInd((Boolean) bspOWL.getPropertyValue(multy_platform_property));
+            bspList.add(new BSP(name, bspAdv, avalAndr, multyplat));
         }
 
         //LogLib
@@ -733,6 +755,8 @@ public class Content {
 		 }catch(Exception ex){
 			 ex.printStackTrace();
 		 }
+	     getDataProperty();
+	     getObjectProperty();
 		 updateContent();
 		 
 	}
